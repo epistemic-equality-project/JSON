@@ -39,7 +39,13 @@ jobs:
           echo "exported=$EXPORTED" >> "$GITHUB_OUTPUT"
           echo "reasons=$REASONS" >> "$GITHUB_OUTPUT"
 
-      - name: Send summary and attachment
+          {
+            echo "json<<JSON_EOF"
+            cat "$FILE"
+            echo "JSON_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Send complete JSON email
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -51,7 +57,9 @@ jobs:
           to: ${{ secrets.GMAIL_USER }}
           subject: New JSON Submission - ${{ steps.report.outputs.session }}
           body: |
-            New JSON Submission
+            NEW JSON SUBMISSION
+
+            SUMMARY
 
             Session ID:
             ${{ steps.report.outputs.session }}
@@ -74,5 +82,9 @@ jobs:
             Commit:
             ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
 
-            The complete JSON report is attached.
+            FULL JSON
+
+            ${{ steps.report.outputs.json }}
+
+            The complete JSON file is also attached.
           attachments: ${{ steps.report.outputs.file }}
