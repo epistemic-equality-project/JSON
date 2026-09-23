@@ -15,8 +15,7 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Read new JSON report
-        id: report
+      - name: Find new JSON report
         shell: bash
         run: |
           FILE=$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" \
@@ -28,22 +27,68 @@ jobs:
             exit 1
           fi
 
-          SESSION=$(jq -r '.session.id // "Unknown"' "$FILE")
-          LEVEL=$(jq -r '.passwordEvaluation.level // "Unknown"' "$FILE")
-          EXPORTED=$(jq -r '.exportedAt // "Unknown"' "$FILE")
-          REASONS=$(jq -r '.passwordEvaluation.reasons // [] | join("; ")' "$FILE")
+          echo "REPORT_FILE=$FILE" >> "$GITHUB_ENV"
 
-          echo "file=$FILE" >> "$GITHUB_OUTPUT"
-          echo "session=$SESSION" >> "$GITHUB_OUTPUT"
-          echo "level=$LEVEL" >> "$GITHUB_OUTPUT"
-          echo "exported=$EXPORTED" >> "$GITHUB_OUTPUT"
-          echo "reasons=$REASONS" >> "$GITHUB_OUTPUT"
+      - name: Build complete email body
+        shell: python
+        run: |
+          import html
+          import json
+          import os
+          from pathlib import Path
 
-          {
-            echo "json<<JSON_EOF"
-            cat "$FILE"
-            echo "JSON_EOF"
-          } >> "$GITHUB_OUTPUT"
+          file_path = os.environ["REPORT_FILE"]
+          repository = os.environ["GITHUB_REPOSITORY"]
+          server_url = os.environ["GITHUB_SERVER_URL"]
+          commit_sha = os.environ["GITHUB_SHA"]
+
+          with open(file_path, "r", encoding="utf-8") as file:
+              report = json.load(file)
+
+          session = report.get("session", {}).get("id", "Unknown")
+          level = report.get("passwordEvaluation", {}).get("level", "Unknown")
+          reasons = report.get("passwordEvaluation", {}).get("reasons", [])
+          exported = report.get("exportedAt", "Unknown")
+
+          pretty_json = json.dumps(report, indent=2, ensure_ascii=False)
+          reason_text = "; ".join(str(reason) for reason in reasons) or "None"
+
+          email_html = f"""
+          <html>
+          <body style="font-family:Arial,sans-serif;color:#222;">
+            <h2>New JSON Submission</h2>
+
+            <h3>Summary</h3>
+            <p><strong>Session ID:</strong> {html.escape(str(session))}</p>
+            <p><strong>Evaluation Level:</strong> {html.escape(str(level))}</p>
+            <p><strong>Evaluation Reasons:</strong> {html.escape(reason_text)}</p>
+            <p><strong>Exported At:</strong> {html.escape(str(exported))}</p>
+            <p><strong>File:</strong> {html.escape(file_path)}</p>
+
+            <p>
+              <strong>Repository:</strong>
+              {server_url}/{repository}{server_url}/{repository}</a>
+            </p>
+
+            <p>
+              <strong>Commit:</strong>
+              {server_url}/{repository}/commit/{commit_sha}
+                {commit_sha}
+              </a>
+            </p>
+
+            <h3>Complete JSON</h3>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;padding:16px;white-space:pre-wrap;overflow-wrap:anywhere;">{html.escape(pretty_json)}</pre>
+
+            <p>The original JSON file is also attached.</p>
+          </body>
+          </html>
+          """
+
+          Path("email_body.html").write_text(email_html, encoding="utf-8")
+
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as environment:
+              environment.write(f"SESSION_ID={session}\n")
 
       - name: Send complete JSON email
         uses: dawidd6/action-send-mail@v3
@@ -55,36 +100,6 @@ jobs:
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
           from: GitHub JSON Alert <${{ secrets.GMAIL_USER }}>
           to: ${{ secrets.GMAIL_USER }}
-          subject: New JSON Submission - ${{ steps.report.outputs.session }}
-          body: |
-            NEW JSON SUBMISSION
-
-            SUMMARY
-
-            Session ID:
-            ${{ steps.report.outputs.session }}
-
-            Evaluation Level:
-            ${{ steps.report.outputs.level }}
-
-            Evaluation Reasons:
-            ${{ steps.report.outputs.reasons }}
-
-            Exported At:
-            ${{ steps.report.outputs.exported }}
-
-            File:
-            ${{ steps.report.outputs.file }}
-
-            Repository:
-            ${{ github.server_url }}/${{ github.repository }}
-
-            Commit:
-            ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
-
-            FULL JSON
-
-            ${{ steps.report.outputs.json }}
-
-            The complete JSON file is also attached.
-          attachments: ${{ steps.report.outputs.file }}
+          subject: New JSON Submission - ${{ env.SESSION_ID }}
+          html_body: file://email_body.html
+          attachments: ${{ env.REPORT_FILE }}
