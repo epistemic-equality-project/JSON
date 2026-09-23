@@ -1,0 +1,102 @@
+{
+  "schema": "local-awareness-simulation/v1",
+  "exportedAt": "2026-09-23T17:37:49.929Z",
+  "warning": "Contains operator-provided synthetic test data in plain text. Do not use real credentials.",
+  "session": {
+    "id": "SIM-MUEDYPAQ-5EXAOS",
+    "startedAt": "2026-09-23T17:37:40.754Z",
+    "completedAt": "2026-09-23T17:37:49.929Z",
+    "mode": "standalone_local",
+    "networkRequired": false
+  },
+  "syntheticCredential": {
+    "identity": "TestMail@troy.com",
+    "password": "TroyPassword123!!",
+    "plaintext": true
+  },
+  "passwordEvaluation": {
+    "level": "WEAK",
+    "reasons": [
+      "Length: 17 characters — strong",
+      "Contains lowercase letters",
+      "Contains uppercase letters",
+      "Contains numbers",
+      "Contains symbols",
+      "Contains a predictable sequence",
+      "Contains a commonly guessed word or pattern"
+    ],
+    "length": 17,
+    "hasLower": true,
+    "hasUpper": true,
+    "hasDigit": true,
+    "hasSymbol": true,
+    "predictableSequence": true,
+    "repeatedCharacters": false,
+    "commonPattern": true,
+    "heuristicOnly": true,
+    "displayDurationMs": 0
+  },
+  "timeline": [
+    {
+      "time": "2026-09-23T17:37:40.754Z",
+      "sessionId": "SIM-MUEDYPAQ-5EXAOS",
+      "type": "simulation_loaded",
+      "mode": "standalone_local",
+      "networkRequired": false
+    },
+    {
+      "time": "2026-09-23T17:37:45.981Z",
+      "sessionId": "SIM-MUEDYPAQ-5EXAOS",
+      "type": "identity_step_completed",
+      "identityLength": 17,
+      "containsAtSign": true,
+      "identityTextIncluded": false
+    },
+    {
+      "time": "2026-09-23T17:37:49.918Z",
+      "sessionId": "SIM-MUEDYPAQ-5EXAOS",
+      "type": "password_submitted",
+      "exportWillIncludeSyntheticPlaintext": true,
+      "evaluation": {
+        "level": "WEAK",
+        "reasons": [
+          "Length: 17 characters — strong",
+          "Contains lowercase letters",
+          "Contains uppercase letters",
+          "Contains numbers",
+          "Contains symbols",
+          "Contains a predictable sequence",
+          "Contains a commonly guessed word or pattern"
+        ],
+        "length": 17,
+        "hasLower": true,
+        "hasUpper": true,
+        "hasDigit": true,
+        "hasSymbol": true,
+        "predictableSequence": true,
+        "repeatedCharacters": false,
+        "commonPattern": true
+      }
+    },
+    {
+      "time": "2026-09-23T17:37:49.929Z",
+      "sessionId": "SIM-MUEDYPAQ-5EXAOS",
+      "type": "password_display_purged",
+      "trigger": "password_submission",
+      "displayDurationMs": 0,
+      "rawPasswordIncluded": false
+    },
+    {
+      "time": "2026-09-23T17:37:49.929Z",
+      "sessionId": "SIM-MUEDYPAQ-5EXAOS",
+      "type": "training_reveal_shown",
+      "trigger": "password_submission"
+    },
+    {
+      "time": "2026-09-23T17:37:49.929Z",
+      "sessionId": "SIM-MUEDYPAQ-5EXAOS",
+      "type": "json_report_prepared",
+      "syntheticPlaintextIncluded": true
+    }
+  ]
+}
