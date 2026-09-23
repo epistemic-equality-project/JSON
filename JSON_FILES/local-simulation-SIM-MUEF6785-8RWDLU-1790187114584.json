@@ -1,0 +1,98 @@
+{
+  "schema": "local-awareness-simulation/v1",
+  "exportedAt": "2026-09-23T18:11:54.584Z",
+  "warning": "Contains operator-provided synthetic test data in plain text. Do not use real credentials.",
+  "session": {
+    "id": "SIM-MUEF6785-8RWDLU",
+    "startedAt": "2026-09-23T18:11:30.197Z",
+    "completedAt": "2026-09-23T18:11:54.584Z",
+    "mode": "standalone_local",
+    "networkRequired": false
+  },
+  "syntheticCredential": {
+    "identity": "HereWeGoSteelers",
+    "password": "OurOffenseSucks",
+    "plaintext": true
+  },
+  "passwordEvaluation": {
+    "level": "MEDIUM",
+    "reasons": [
+      "Length: 15 characters — good",
+      "Contains lowercase letters",
+      "Contains uppercase letters",
+      "No numbers",
+      "No symbols"
+    ],
+    "length": 15,
+    "hasLower": true,
+    "hasUpper": true,
+    "hasDigit": false,
+    "hasSymbol": false,
+    "predictableSequence": false,
+    "repeatedCharacters": false,
+    "commonPattern": false,
+    "heuristicOnly": true,
+    "displayDurationMs": 0
+  },
+  "timeline": [
+    {
+      "time": "2026-09-23T18:11:30.197Z",
+      "sessionId": "SIM-MUEF6785-8RWDLU",
+      "type": "simulation_loaded",
+      "mode": "standalone_local",
+      "networkRequired": false
+    },
+    {
+      "time": "2026-09-23T18:11:41.579Z",
+      "sessionId": "SIM-MUEF6785-8RWDLU",
+      "type": "identity_step_completed",
+      "identityLength": 16,
+      "containsAtSign": false,
+      "identityTextIncluded": false
+    },
+    {
+      "time": "2026-09-23T18:11:54.553Z",
+      "sessionId": "SIM-MUEF6785-8RWDLU",
+      "type": "password_submitted",
+      "exportWillIncludeSyntheticPlaintext": true,
+      "evaluation": {
+        "level": "MEDIUM",
+        "reasons": [
+          "Length: 15 characters — good",
+          "Contains lowercase letters",
+          "Contains uppercase letters",
+          "No numbers",
+          "No symbols"
+        ],
+        "length": 15,
+        "hasLower": true,
+        "hasUpper": true,
+        "hasDigit": false,
+        "hasSymbol": false,
+        "predictableSequence": false,
+        "repeatedCharacters": false,
+        "commonPattern": false
+      }
+    },
+    {
+      "time": "2026-09-23T18:11:54.584Z",
+      "sessionId": "SIM-MUEF6785-8RWDLU",
+      "type": "password_display_purged",
+      "trigger": "password_submission",
+      "displayDurationMs": 0,
+      "rawPasswordIncluded": false
+    },
+    {
+      "time": "2026-09-23T18:11:54.584Z",
+      "sessionId": "SIM-MUEF6785-8RWDLU",
+      "type": "training_reveal_shown",
+      "trigger": "password_submission"
+    },
+    {
+      "time": "2026-09-23T18:11:54.584Z",
+      "sessionId": "SIM-MUEF6785-8RWDLU",
+      "type": "json_report_prepared",
+      "syntheticPlaintextIncluded": true
+    }
+  ]
+}
