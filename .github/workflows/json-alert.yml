@@ -12,14 +12,34 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-      - name: Find JSON file
+      - name: Read new JSON report
         id: report
+        shell: bash
         run: |
-          FILE=$(ls -t JSON_FILES/*.json | head -n 1)
-          echo "file=$FILE" >> $GITHUB_OUTPUT
+          FILE=$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" \
+            | grep '^JSON_FILES/.*\.json$' \
+            | head -n 1)
 
-      - name: Send Email
+          if [ -z "$FILE" ]; then
+            echo "No JSON file found in this commit."
+            exit 1
+          fi
+
+          SESSION=$(jq -r '.session.id // "Unknown"' "$FILE")
+          LEVEL=$(jq -r '.passwordEvaluation.level // "Unknown"' "$FILE")
+          EXPORTED=$(jq -r '.exportedAt // "Unknown"' "$FILE")
+          REASONS=$(jq -r '.passwordEvaluation.reasons // [] | join("; ")' "$FILE")
+
+          echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          echo "session=$SESSION" >> "$GITHUB_OUTPUT"
+          echo "level=$LEVEL" >> "$GITHUB_OUTPUT"
+          echo "exported=$EXPORTED" >> "$GITHUB_OUTPUT"
+          echo "reasons=$REASONS" >> "$GITHUB_OUTPUT"
+
+      - name: Send summary and attachment
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -27,16 +47,32 @@ jobs:
           secure: true
           username: ${{ secrets.GMAIL_USER }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
-          subject: New JSON Submission
+          from: GitHub JSON Alert <${{ secrets.GMAIL_USER }}>
           to: ${{ secrets.GMAIL_USER }}
-          from: ${{ secrets.GMAIL_USER }}
+          subject: New JSON Submission - ${{ steps.report.outputs.session }}
           body: |
-            A new JSON file has been uploaded.
+            New JSON Submission
 
-            Repository: ${{ github.repository }}
-            File: ${{ steps.report.outputs.file }}
+            Session ID:
+            ${{ steps.report.outputs.session }}
 
-            View Repository:
-            https://github.com/${{ github.repository }}
+            Evaluation Level:
+            ${{ steps.report.outputs.level }}
 
+            Evaluation Reasons:
+            ${{ steps.report.outputs.reasons }}
+
+            Exported At:
+            ${{ steps.report.outputs.exported }}
+
+            File:
+            ${{ steps.report.outputs.file }}
+
+            Repository:
+            ${{ github.server_url }}/${{ github.repository }}
+
+            Commit:
+            ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+
+            The complete JSON report is attached.
           attachments: ${{ steps.report.outputs.file }}
