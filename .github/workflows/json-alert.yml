@@ -1,0 +1,15 @@
+name: JSON Alert
+
+on:
+  push:
+    paths:
+      - 'JSON_FILES/*.json'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Alert
+        run: |
+          echo "New JSON file received!"
