@@ -10,6 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Alert
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Find JSON file
+        id: report
         run: |
-          echo "New JSON file received!"
+          FILE=$(ls -t JSON_FILES/*.json | head -n 1)
+          echo "file=$FILE" >> $GITHUB_OUTPUT
+
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: New JSON Submission
+          to: ${{ secrets.GMAIL_USER }}
+          from: ${{ secrets.GMAIL_USER }}
+          body: |
+            A new JSON file has been uploaded.
+
+            Repository: ${{ github.repository }}
+            File: ${{ steps.report.outputs.file }}
+
+            View Repository:
+            https://github.com/${{ github.repository }}
+
+          attachments: ${{ steps.report.outputs.file }}
