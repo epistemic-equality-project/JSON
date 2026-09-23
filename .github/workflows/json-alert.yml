@@ -1,4 +1,4 @@
-name: JSON Alert
+name: New JSON Submission
 
 on:
   push:
