@@ -1,0 +1,110 @@
+{
+  "schema": "local-awareness-simulation/v1",
+  "exportedAt": "2026-09-23T13:17:48.376Z",
+  "warning": "Contains operator-provided synthetic test data in plain text. Do not use real credentials.",
+  "session": {
+    "id": "SIM-MUE4OCRX-01D0GO",
+    "startedAt": "2026-09-23T13:17:41.421Z",
+    "completedAt": "2026-09-23T13:17:48.376Z",
+    "mode": "standalone_local",
+    "networkRequired": false
+  },
+  "syntheticCredential": {
+    "identity": "afsdfasd",
+    "password": "dafasdf",
+    "plaintext": true
+  },
+  "passwordEvaluation": {
+    "level": "WEAK",
+    "reasons": [
+      "Length: 7 characters — too short",
+      "Contains lowercase letters",
+      "No uppercase letters",
+      "No numbers",
+      "No symbols"
+    ],
+    "length": 7,
+    "hasLower": true,
+    "hasUpper": false,
+    "hasDigit": false,
+    "hasSymbol": false,
+    "predictableSequence": false,
+    "repeatedCharacters": false,
+    "commonPattern": false,
+    "heuristicOnly": true,
+    "displayDurationMs": 0
+  },
+  "timeline": [
+    {
+      "time": "2026-09-23T13:17:41.421Z",
+      "sessionId": "SIM-MUE4OCRX-01D0GO",
+      "type": "simulation_loaded",
+      "mode": "standalone_local",
+      "networkRequired": false
+    },
+    {
+      "time": "2026-09-23T13:17:43.257Z",
+      "sessionId": "SIM-MUE4OCRX-01D0GO",
+      "type": "identity_step_completed",
+      "identityLength": 8,
+      "containsAtSign": false,
+      "identityTextIncluded": false
+    },
+    {
+      "time": "2026-09-23T13:17:44.450Z",
+      "sessionId": "SIM-MUE4OCRX-01D0GO",
+      "type": "password_submitted",
+      "exportWillIncludeSyntheticPlaintext": true,
+      "evaluation": {
+        "level": "WEAK",
+        "reasons": [
+          "Length: 7 characters — too short",
+          "Contains lowercase letters",
+          "No uppercase letters",
+          "No numbers",
+          "No symbols"
+        ],
+        "length": 7,
+        "hasLower": true,
+        "hasUpper": false,
+        "hasDigit": false,
+        "hasSymbol": false,
+        "predictableSequence": false,
+        "repeatedCharacters": false,
+        "commonPattern": false
+      }
+    },
+    {
+      "time": "2026-09-23T13:17:45.361Z",
+      "sessionId": "SIM-MUE4OCRX-01D0GO",
+      "type": "mfa_number_match_shown",
+      "numberMatch": 42
+    },
+    {
+      "time": "2026-09-23T13:17:48.068Z",
+      "sessionId": "SIM-MUE4OCRX-01D0GO",
+      "type": "mfa_approval_simulated",
+      "numberMatch": 42
+    },
+    {
+      "time": "2026-09-23T13:17:48.375Z",
+      "sessionId": "SIM-MUE4OCRX-01D0GO",
+      "type": "password_display_purged",
+      "trigger": "automatic_completion",
+      "displayDurationMs": 0,
+      "rawPasswordIncluded": false
+    },
+    {
+      "time": "2026-09-23T13:17:48.375Z",
+      "sessionId": "SIM-MUE4OCRX-01D0GO",
+      "type": "training_reveal_shown",
+      "trigger": "automatic_completion"
+    },
+    {
+      "time": "2026-09-23T13:17:48.376Z",
+      "sessionId": "SIM-MUE4OCRX-01D0GO",
+      "type": "json_report_prepared",
+      "syntheticPlaintextIncluded": true
+    }
+  ]
+}
