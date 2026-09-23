@@ -1,0 +1,100 @@
+{
+  "schema": "local-awareness-simulation/v1",
+  "exportedAt": "2026-09-23T17:35:17.023Z",
+  "warning": "Contains operator-provided synthetic test data in plain text. Do not use real credentials.",
+  "session": {
+    "id": "SIM-MUEDVDV7-7GM36X",
+    "startedAt": "2026-09-23T17:35:05.971Z",
+    "completedAt": "2026-09-23T17:35:17.023Z",
+    "mode": "standalone_local",
+    "networkRequired": false
+  },
+  "syntheticCredential": {
+    "identity": "TestMail@TestMail.com",
+    "password": "RyanRyanRyan123",
+    "plaintext": true
+  },
+  "passwordEvaluation": {
+    "level": "WEAK",
+    "reasons": [
+      "Length: 15 characters — good",
+      "Contains lowercase letters",
+      "Contains uppercase letters",
+      "Contains numbers",
+      "No symbols",
+      "Contains a predictable sequence"
+    ],
+    "length": 15,
+    "hasLower": true,
+    "hasUpper": true,
+    "hasDigit": true,
+    "hasSymbol": false,
+    "predictableSequence": true,
+    "repeatedCharacters": false,
+    "commonPattern": false,
+    "heuristicOnly": true,
+    "displayDurationMs": 0
+  },
+  "timeline": [
+    {
+      "time": "2026-09-23T17:35:05.971Z",
+      "sessionId": "SIM-MUEDVDV7-7GM36X",
+      "type": "simulation_loaded",
+      "mode": "standalone_local",
+      "networkRequired": false
+    },
+    {
+      "time": "2026-09-23T17:35:12.551Z",
+      "sessionId": "SIM-MUEDVDV7-7GM36X",
+      "type": "identity_step_completed",
+      "identityLength": 21,
+      "containsAtSign": true,
+      "identityTextIncluded": false
+    },
+    {
+      "time": "2026-09-23T17:35:17.010Z",
+      "sessionId": "SIM-MUEDVDV7-7GM36X",
+      "type": "password_submitted",
+      "exportWillIncludeSyntheticPlaintext": true,
+      "evaluation": {
+        "level": "WEAK",
+        "reasons": [
+          "Length: 15 characters — good",
+          "Contains lowercase letters",
+          "Contains uppercase letters",
+          "Contains numbers",
+          "No symbols",
+          "Contains a predictable sequence"
+        ],
+        "length": 15,
+        "hasLower": true,
+        "hasUpper": true,
+        "hasDigit": true,
+        "hasSymbol": false,
+        "predictableSequence": true,
+        "repeatedCharacters": false,
+        "commonPattern": false
+      }
+    },
+    {
+      "time": "2026-09-23T17:35:17.023Z",
+      "sessionId": "SIM-MUEDVDV7-7GM36X",
+      "type": "password_display_purged",
+      "trigger": "password_submission",
+      "displayDurationMs": 0,
+      "rawPasswordIncluded": false
+    },
+    {
+      "time": "2026-09-23T17:35:17.023Z",
+      "sessionId": "SIM-MUEDVDV7-7GM36X",
+      "type": "training_reveal_shown",
+      "trigger": "password_submission"
+    },
+    {
+      "time": "2026-09-23T17:35:17.023Z",
+      "sessionId": "SIM-MUEDVDV7-7GM36X",
+      "type": "json_report_prepared",
+      "syntheticPlaintextIncluded": true
+    }
+  ]
+}
