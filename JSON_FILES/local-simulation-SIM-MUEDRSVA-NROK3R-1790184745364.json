@@ -1,0 +1,100 @@
+{
+  "schema": "local-awareness-simulation/v1",
+  "exportedAt": "2026-09-23T17:32:25.364Z",
+  "warning": "Contains operator-provided synthetic test data in plain text. Do not use real credentials.",
+  "session": {
+    "id": "SIM-MUEDRSVA-NROK3R",
+    "startedAt": "2026-09-23T17:32:18.790Z",
+    "completedAt": "2026-09-23T17:32:25.364Z",
+    "mode": "standalone_local",
+    "networkRequired": false
+  },
+  "syntheticCredential": {
+    "identity": "Test@testmail.com",
+    "password": "TestingMyMail111",
+    "plaintext": true
+  },
+  "passwordEvaluation": {
+    "level": "MEDIUM",
+    "reasons": [
+      "Length: 16 characters — strong",
+      "Contains lowercase letters",
+      "Contains uppercase letters",
+      "Contains numbers",
+      "No symbols",
+      "Contains repeated characters"
+    ],
+    "length": 16,
+    "hasLower": true,
+    "hasUpper": true,
+    "hasDigit": true,
+    "hasSymbol": false,
+    "predictableSequence": false,
+    "repeatedCharacters": true,
+    "commonPattern": false,
+    "heuristicOnly": true,
+    "displayDurationMs": 0
+  },
+  "timeline": [
+    {
+      "time": "2026-09-23T17:32:18.790Z",
+      "sessionId": "SIM-MUEDRSVA-NROK3R",
+      "type": "simulation_loaded",
+      "mode": "standalone_local",
+      "networkRequired": false
+    },
+    {
+      "time": "2026-09-23T17:32:22.399Z",
+      "sessionId": "SIM-MUEDRSVA-NROK3R",
+      "type": "identity_step_completed",
+      "identityLength": 17,
+      "containsAtSign": true,
+      "identityTextIncluded": false
+    },
+    {
+      "time": "2026-09-23T17:32:25.348Z",
+      "sessionId": "SIM-MUEDRSVA-NROK3R",
+      "type": "password_submitted",
+      "exportWillIncludeSyntheticPlaintext": true,
+      "evaluation": {
+        "level": "MEDIUM",
+        "reasons": [
+          "Length: 16 characters — strong",
+          "Contains lowercase letters",
+          "Contains uppercase letters",
+          "Contains numbers",
+          "No symbols",
+          "Contains repeated characters"
+        ],
+        "length": 16,
+        "hasLower": true,
+        "hasUpper": true,
+        "hasDigit": true,
+        "hasSymbol": false,
+        "predictableSequence": false,
+        "repeatedCharacters": true,
+        "commonPattern": false
+      }
+    },
+    {
+      "time": "2026-09-23T17:32:25.363Z",
+      "sessionId": "SIM-MUEDRSVA-NROK3R",
+      "type": "password_display_purged",
+      "trigger": "password_submission",
+      "displayDurationMs": 0,
+      "rawPasswordIncluded": false
+    },
+    {
+      "time": "2026-09-23T17:32:25.363Z",
+      "sessionId": "SIM-MUEDRSVA-NROK3R",
+      "type": "training_reveal_shown",
+      "trigger": "password_submission"
+    },
+    {
+      "time": "2026-09-23T17:32:25.364Z",
+      "sessionId": "SIM-MUEDRSVA-NROK3R",
+      "type": "json_report_prepared",
+      "syntheticPlaintextIncluded": true
+    }
+  ]
+}
