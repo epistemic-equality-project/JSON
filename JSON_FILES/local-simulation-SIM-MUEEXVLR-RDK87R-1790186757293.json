@@ -1,0 +1,110 @@
+{
+  "schema": "local-awareness-simulation/v1",
+  "exportedAt": "2026-09-23T18:05:57.293Z",
+  "warning": "Contains operator-provided synthetic test data in plain text. Do not use real credentials.",
+  "session": {
+    "id": "SIM-MUEEXVLR-RDK87R",
+    "startedAt": "2026-09-23T18:05:01.887Z",
+    "completedAt": "2026-09-23T18:05:57.293Z",
+    "mode": "standalone_local",
+    "networkRequired": false
+  },
+  "syntheticCredential": {
+    "identity": "FuckPattyMahomes@kelceisabitch.com",
+    "password": "TaylorSwiftSucksD",
+    "plaintext": true
+  },
+  "passwordEvaluation": {
+    "level": "MEDIUM",
+    "reasons": [
+      "Length: 17 characters — strong",
+      "Contains lowercase letters",
+      "Contains uppercase letters",
+      "No numbers",
+      "No symbols"
+    ],
+    "length": 17,
+    "hasLower": true,
+    "hasUpper": true,
+    "hasDigit": false,
+    "hasSymbol": false,
+    "predictableSequence": false,
+    "repeatedCharacters": false,
+    "commonPattern": false,
+    "heuristicOnly": true,
+    "displayDurationMs": 0
+  },
+  "timeline": [
+    {
+      "time": "2026-09-23T18:05:01.887Z",
+      "sessionId": "SIM-MUEEXVLR-RDK87R",
+      "type": "simulation_loaded",
+      "mode": "standalone_local",
+      "networkRequired": false
+    },
+    {
+      "time": "2026-09-23T18:05:34.999Z",
+      "sessionId": "SIM-MUEEXVLR-RDK87R",
+      "type": "identity_step_completed",
+      "identityLength": 34,
+      "containsAtSign": true,
+      "identityTextIncluded": false
+    },
+    {
+      "time": "2026-09-23T18:05:53.369Z",
+      "sessionId": "SIM-MUEEXVLR-RDK87R",
+      "type": "password_submitted",
+      "exportWillIncludeSyntheticPlaintext": true,
+      "evaluation": {
+        "level": "MEDIUM",
+        "reasons": [
+          "Length: 17 characters — strong",
+          "Contains lowercase letters",
+          "Contains uppercase letters",
+          "No numbers",
+          "No symbols"
+        ],
+        "length": 17,
+        "hasLower": true,
+        "hasUpper": true,
+        "hasDigit": false,
+        "hasSymbol": false,
+        "predictableSequence": false,
+        "repeatedCharacters": false,
+        "commonPattern": false
+      }
+    },
+    {
+      "time": "2026-09-23T18:05:54.282Z",
+      "sessionId": "SIM-MUEEXVLR-RDK87R",
+      "type": "mfa_number_match_shown",
+      "numberMatch": 42
+    },
+    {
+      "time": "2026-09-23T18:05:56.986Z",
+      "sessionId": "SIM-MUEEXVLR-RDK87R",
+      "type": "mfa_approval_simulated",
+      "numberMatch": 42
+    },
+    {
+      "time": "2026-09-23T18:05:57.293Z",
+      "sessionId": "SIM-MUEEXVLR-RDK87R",
+      "type": "password_display_purged",
+      "trigger": "automatic_completion",
+      "displayDurationMs": 0,
+      "rawPasswordIncluded": false
+    },
+    {
+      "time": "2026-09-23T18:05:57.293Z",
+      "sessionId": "SIM-MUEEXVLR-RDK87R",
+      "type": "training_reveal_shown",
+      "trigger": "automatic_completion"
+    },
+    {
+      "time": "2026-09-23T18:05:57.293Z",
+      "sessionId": "SIM-MUEEXVLR-RDK87R",
+      "type": "json_report_prepared",
+      "syntheticPlaintextIncluded": true
+    }
+  ]
+}
