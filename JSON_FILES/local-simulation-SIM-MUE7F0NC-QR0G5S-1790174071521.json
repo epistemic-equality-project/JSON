@@ -1,0 +1,100 @@
+{
+  "schema": "local-awareness-simulation/v1",
+  "exportedAt": "2026-09-23T14:34:31.521Z",
+  "warning": "Contains operator-provided synthetic test data in plain text. Do not use real credentials.",
+  "session": {
+    "id": "SIM-MUE7F0NC-QR0G5S",
+    "startedAt": "2026-09-23T14:34:24.648Z",
+    "completedAt": "2026-09-23T14:34:31.521Z",
+    "mode": "standalone_local",
+    "networkRequired": false
+  },
+  "syntheticCredential": {
+    "identity": "wmail@wmail.com",
+    "password": "wmail111",
+    "plaintext": true
+  },
+  "passwordEvaluation": {
+    "level": "WEAK",
+    "reasons": [
+      "Length: 8 characters — below the 12–16 character target",
+      "Contains lowercase letters",
+      "No uppercase letters",
+      "Contains numbers",
+      "No symbols",
+      "Contains repeated characters"
+    ],
+    "length": 8,
+    "hasLower": true,
+    "hasUpper": false,
+    "hasDigit": true,
+    "hasSymbol": false,
+    "predictableSequence": false,
+    "repeatedCharacters": true,
+    "commonPattern": false,
+    "heuristicOnly": true,
+    "displayDurationMs": 0
+  },
+  "timeline": [
+    {
+      "time": "2026-09-23T14:34:24.648Z",
+      "sessionId": "SIM-MUE7F0NC-QR0G5S",
+      "type": "simulation_loaded",
+      "mode": "standalone_local",
+      "networkRequired": false
+    },
+    {
+      "time": "2026-09-23T14:34:28.802Z",
+      "sessionId": "SIM-MUE7F0NC-QR0G5S",
+      "type": "identity_step_completed",
+      "identityLength": 15,
+      "containsAtSign": true,
+      "identityTextIncluded": false
+    },
+    {
+      "time": "2026-09-23T14:34:31.506Z",
+      "sessionId": "SIM-MUE7F0NC-QR0G5S",
+      "type": "password_submitted",
+      "exportWillIncludeSyntheticPlaintext": true,
+      "evaluation": {
+        "level": "WEAK",
+        "reasons": [
+          "Length: 8 characters — below the 12–16 character target",
+          "Contains lowercase letters",
+          "No uppercase letters",
+          "Contains numbers",
+          "No symbols",
+          "Contains repeated characters"
+        ],
+        "length": 8,
+        "hasLower": true,
+        "hasUpper": false,
+        "hasDigit": true,
+        "hasSymbol": false,
+        "predictableSequence": false,
+        "repeatedCharacters": true,
+        "commonPattern": false
+      }
+    },
+    {
+      "time": "2026-09-23T14:34:31.520Z",
+      "sessionId": "SIM-MUE7F0NC-QR0G5S",
+      "type": "password_display_purged",
+      "trigger": "password_submission",
+      "displayDurationMs": 0,
+      "rawPasswordIncluded": false
+    },
+    {
+      "time": "2026-09-23T14:34:31.521Z",
+      "sessionId": "SIM-MUE7F0NC-QR0G5S",
+      "type": "training_reveal_shown",
+      "trigger": "password_submission"
+    },
+    {
+      "time": "2026-09-23T14:34:31.521Z",
+      "sessionId": "SIM-MUE7F0NC-QR0G5S",
+      "type": "json_report_prepared",
+      "syntheticPlaintextIncluded": true
+    }
+  ]
+}
